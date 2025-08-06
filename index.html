@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Property Investment & Cash Flow Optimization Calculator</title>
+    <title>Rental Property Investment Calculator</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -31,9 +31,9 @@
 <body class="bg-gray-100 flex items-center justify-center min-h-screen p-4 sm:p-6 lg:p-8">
     <div class="bg-white p-6 sm:p-8 lg:p-10 rounded-xl shadow-2xl w-full max-w-4xl border border-gray-200">
         <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-2 text-center">Evergreen Investments</h1>
-        <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">Property Investment Calculator</h2>
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">Rental Property Investment Calculator</h2>
         <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
-            Calculate your potential cash flow and returns for a property investment.
+            Calculate your potential cash flow and returns for a rental property investment.
             Enter the details below to see a comprehensive analysis.
         </p>
 
@@ -43,73 +43,164 @@
                 <h2 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">Property Details</h2>
                 <div class="space-y-4">
                     <div>
+                        <label for="propertyType" class="block text-sm font-medium text-gray-700 mb-1">Property Type</label>
+                        <select id="propertyType" class="w-full p-3 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out shadow-sm">
+                            <option value="single-family">Single Family Home</option>
+                            <option value="multi-family">Multi-Family (Duplex, Triplex, etc.)</option>
+                            <option value="condo">Condo/Townhouse</option>
+                            <option value="commercial">Commercial</option>
+                            <option value="land">Land</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <p class="text-xs text-gray-500 mt-1">Select the type of property you are investing in.</p>
+                    </div>
+                    <div>
+                        <label for="location" class="block text-sm font-medium text-gray-700 mb-1">Location (City, State/Province, Country)</label>
+                        <input type="text" id="location" placeholder="e.g., New York, NY, USA" class="w-full p-3 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out shadow-sm">
+                        <p class="text-xs text-gray-500 mt-1">Enter the property's location. Useful for considering local taxes or regulations.</p>
+                    </div>
+                    <div>
                         <label for="purchasePrice" class="block text-sm font-medium text-gray-700 mb-1">Purchase Price ($)</label>
-                        <input type="number" id="purchasePrice" value="300000" class="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out shadow-sm">
-                    </div>
-                    <div>
-                        <label for="downPayment" class="block text-sm font-medium text-gray-700 mb-1">Down Payment (%)</label>
-                        <input type="number" id="downPayment" value="20" class="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out shadow-sm">
-                    </div>
-                    <div>
-                        <label for="interestRate" class="block text-sm font-medium text-gray-700 mb-1">Interest Rate (%)</label>
-                        <input type="number" id="interestRate" value="7.0" step="0.1" class="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out shadow-sm">
-                    </div>
-                    <div>
-                        <label for="loanTerm" class="block text-sm font-medium text-gray-700 mb-1">Loan Term (Years)</label>
-                        <input type="number" id="loanTerm" value="30" class="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out shadow-sm">
+                        <input type="number" id="purchasePrice" value="300000" class="w-full p-3 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out shadow-sm">
                     </div>
                     <div>
                         <label for="closingCosts" class="block text-sm font-medium text-gray-700 mb-1">Closing Costs (%)</label>
-                        <input type="number" id="closingCosts" value="3" step="0.1" class="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out shadow-sm">
+                        <input type="number" id="closingCosts" value="3" step="0.1" class="w-full p-3 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out shadow-sm">
                     </div>
                     <div>
                         <label for="renovationCosts" class="block text-sm font-medium text-gray-700 mb-1">Renovation Costs ($)</label>
-                        <input type="number" id="renovationCosts" value="0" class="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out shadow-sm">
+                        <input type="number" id="renovationCosts" value="0" class="w-full p-3 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out shadow-sm">
+                        <p class="text-xs text-gray-500 mt-1">Initial costs for repairs/renovations before renting.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Income & Expenses Section -->
+            <!-- Loan Details Section -->
             <div class="bg-gray-50 p-5 rounded-lg shadow-inner border border-gray-100">
-                <h2 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">Income & Expenses</h2>
+                <h2 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">Loan Details</h2>
+                <div class="space-y-4">
+                    <div class="flex items-center mb-4">
+                        <input type="checkbox" id="useLoan" checked class="h-5 w-5 text-green-600 border-gray-300 rounded focus:ring-green-500">
+                        <label for="useLoan" class="ml-2 block text-sm font-medium text-gray-700">Use Loan?</label>
+                    </div>
+                    <div id="loanFields" class="space-y-4">
+                        <div>
+                            <label for="downPayment" class="block text-sm font-medium text-gray-700 mb-1">Down Payment (%)</label>
+                            <input type="number" id="downPayment" value="20" class="w-full p-3 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out shadow-sm">
+                        </div>
+                        <div>
+                            <label for="interestRate" class="block text-sm font-medium text-gray-700 mb-1">Interest Rate (%)</label>
+                            <input type="number" id="interestRate" value="7.0" step="0.1" class="w-full p-3 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out shadow-sm">
+                        </div>
+                        <div>
+                            <label for="loanTerm" class="block text-sm font-medium text-gray-700 mb-1">Loan Term (Years)</label>
+                            <input type="number" id="loanTerm" value="30" class="w-full p-3 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out shadow-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Income Section -->
+            <div class="bg-gray-50 p-5 rounded-lg shadow-inner border border-gray-100">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">Income</h2>
                 <div class="space-y-4">
                     <div>
-                        <label for="rentalIncome" class="block text-sm font-medium text-gray-700 mb-1">Monthly Rental Income ($)</label>
-                        <input type="number" id="rentalIncome" value="2000" class="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out shadow-sm">
+                        <label for="rentalIncome" class="block text-sm font-medium text-gray-700 mb-1">Monthly Rent ($)</label>
+                        <input type="number" id="rentalIncome" value="2000" class="w-full p-3 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out shadow-sm">
                     </div>
                     <div>
-                        <label for="propertyTaxes" class="block text-sm font-medium text-gray-700 mb-1">Annual Property Taxes ($)</label>
-                        <input type="number" id="propertyTaxes" value="3600" class="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out shadow-sm">
+                        <label for="otherMonthlyIncome" class="block text-sm font-medium text-gray-700 mb-1">Other Monthly Income ($)</label>
+                        <input type="number" id="otherMonthlyIncome" value="0" class="w-full p-3 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out shadow-sm">
+                        <p class="text-xs text-gray-500 mt-1">e.g., laundry, parking fees.</p>
                     </div>
                     <div>
-                        <label for="insurance" class="block text-sm font-medium text-gray-700 mb-1">Annual Insurance ($)</label>
-                        <input type="number" id="insurance" value="1200" class="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out shadow-sm">
-                    </div>
-                    <div>
-                        <label for="hoaFees" class="block text-sm font-medium text-gray-700 mb-1">Monthly HOA Fees ($)</label>
-                        <input type="number" id="hoaFees" value="0" class="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out shadow-sm">
-                    </div>
-                    <div>
-                        <label for="maintenance" class="block text-sm font-medium text-gray-700 mb-1">Monthly Maintenance/Repairs (%)</label>
-                        <input type="number" id="maintenance" value="10" step="0.1" class="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out shadow-sm">
-                        <p class="text-xs text-gray-500 mt-1">Percentage of monthly rental income.</p>
+                        <label for="incomeAnnualIncrease" class="block text-sm font-medium text-gray-700 mb-1">Annual Income Increase (%)</label>
+                        <input type="number" id="incomeAnnualIncrease" value="3" step="0.1" class="w-full p-3 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out shadow-sm">
+                        <p class="text-xs text-gray-500 mt-1 text-red-600">Note: This value is for future multi-year projections and does not affect current calculations.</p>
                     </div>
                     <div>
                         <label for="vacancyRate" class="block text-sm font-medium text-gray-700 mb-1">Vacancy Rate (%)</label>
-                        <input type="number" id="vacancyRate" value="5" step="0.1" class="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out shadow-sm">
+                        <input type="number" id="vacancyRate" value="5" step="0.1" class="w-full p-3 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out shadow-sm">
                     </div>
                     <div>
                         <label for="propertyManagement" class="block text-sm font-medium text-gray-700 mb-1">Property Management Fees (%)</label>
-                        <input type="number" id="propertyManagement" value="8" step="0.1" class="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out shadow-sm">
+                        <input type="number" id="propertyManagement" value="8" step="0.1" class="w-full p-3 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out shadow-sm">
                         <p class="text-xs text-gray-500 mt-1">Percentage of monthly rental income.</p>
                     </div>
+                </div>
+            </div>
+
+            <!-- Recurring Operating Expenses Section -->
+            <div class="bg-gray-50 p-5 rounded-lg shadow-inner border border-gray-100">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">Recurring Operating Expenses</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label for="propertyTaxes" class="block text-sm font-medium text-gray-700 mb-1">Annual Property Taxes ($)</label>
+                        <input type="number" id="propertyTaxes" value="3600" class="w-full p-3 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out shadow-sm">
+                    </div>
+                    <div>
+                        <label for="insurance" class="block text-sm font-medium text-gray-700 mb-1">Annual Insurance ($)</label>
+                        <input type="number" id="insurance" value="1200" class="w-full p-3 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out shadow-sm">
+                    </div>
+                    <div>
+                        <label for="hoaFees" class="block text-sm font-medium text-gray-700 mb-1">Monthly HOA Fees ($)</label>
+                        <input type="number" id="hoaFees" value="0" class="w-full p-3 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out shadow-sm">
+                    </div>
+                    <div>
+                        <label for="maintenance" class="block text-sm font-medium text-gray-700 mb-1">Monthly Maintenance/Repairs (%)</label>
+                        <input type="number" id="maintenance" value="10" step="0.1" class="w-full p-3 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out shadow-sm">
+                        <p class="text-xs text-gray-500 mt-1">Percentage of monthly rental income.</p>
+                    </div>
+                    <div>
+                        <label for="otherMonthlyCosts" class="block text-sm font-medium text-gray-700 mb-1">Other Monthly Costs ($)</label>
+                        <input type="number" id="otherMonthlyCosts" value="0" class="w-full p-3 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out shadow-sm">
+                        <p class="text-xs text-gray-500 mt-1">e.g., utilities, pest control.</p>
+                    </div>
+                    <div>
+                        <label for="expenseAnnualIncrease" class="block text-sm font-medium text-gray-700 mb-1">Annual Expense Increase (%)</label>
+                        <input type="number" id="expenseAnnualIncrease" value="2" step="0.1" class="w-full p-3 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out shadow-sm">
+                        <p class="text-xs text-gray-500 mt-1 text-red-600">Note: This value is for future multi-year projections and does not affect current calculations.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sell Projections Section -->
+            <div class="bg-gray-50 p-5 rounded-lg shadow-inner border border-gray-100 md:col-span-2">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">Sell Projections (Future Feature)</h2>
+                <div class="space-y-4">
+                    <div class="flex items-center mb-4">
+                        <input type="checkbox" id="knowSellPrice" class="h-5 w-5 text-green-600 border-gray-300 rounded focus:ring-green-500">
+                        <label for="knowSellPrice" class="ml-2 block text-sm font-medium text-gray-700">Do you know the exact Sell Price?</label>
+                    </div>
+                    <div id="sellPriceFields" class="space-y-4 hidden">
+                        <div>
+                            <label for="exactSellPrice" class="block text-sm font-medium text-gray-700 mb-1">Exact Sell Price ($)</label>
+                            <input type="number" id="exactSellPrice" value="0" class="w-full p-3 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out shadow-sm">
+                        </div>
+                    </div>
+                    <div id="appreciationFields" class="space-y-4">
+                        <div>
+                            <label for="valueAppreciation" class="block text-sm font-medium text-gray-700 mb-1">Value Appreciation per year (%)</label>
+                            <input type="number" id="valueAppreciation" value="3" step="0.1" class="w-full p-3 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out shadow-sm">
+                        </div>
+                        <div>
+                            <label for="holdingLength" class="block text-sm font-medium text-gray-700 mb-1">Holding Length (Years)</label>
+                            <input type="number" id="holdingLength" value="5" class="w-full p-3 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out shadow-sm">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="costToSell" class="block text-sm font-medium text-gray-700 mb-1">Cost to Sell (%)</label>
+                        <input type="number" id="costToSell" value="6" step="0.1" class="w-full p-3 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out shadow-sm">
+                        <p class="text-xs text-gray-500 mt-1">e.g., realtor commissions, closing costs on sale.</p>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-1 text-red-600">Note: Sell projections are for future multi-year calculations and do not affect current cash flow/return metrics.</p>
                 </div>
             </div>
         </div>
 
         <!-- Results Section -->
-        <div class="bg-blue-50 p-6 rounded-xl shadow-lg border border-blue-200">
-            <h2 class="text-2xl font-bold text-blue-800 mb-5 text-center">Investment Summary</h2>
+        <div class="bg-green-50 p-6 rounded-xl shadow-lg border border-green-200">
+            <h2 class="text-2xl font-bold text-green-800 mb-5 text-center">Investment Summary (First Year)</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
                     <p class="text-sm font-medium text-gray-600">Loan Amount</p>
@@ -156,13 +247,22 @@
     </div>
 
     <script>
+        // Helper function to format numbers with commas and two decimal places
+        function formatNumber(num) {
+            return num.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
         // Function to calculate monthly mortgage payment
         function calculateMortgage(principal, annualInterestRate, loanTermYears) {
             const monthlyInterestRate = (annualInterestRate / 100) / 12;
             const numberOfPayments = loanTermYears * 12;
 
             if (monthlyInterestRate === 0) {
-                return principal / numberOfPayments;
+                return numberOfPayments === 0 ? 0 : principal / numberOfPayments;
+            }
+
+            if (numberOfPayments === 0) {
+                return 0; // No payments if term is 0
             }
 
             const numerator = monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfPayments);
@@ -174,25 +274,46 @@
         function updateCalculations() {
             // Get input values
             const purchasePrice = parseFloat(document.getElementById('purchasePrice').value) || 0;
-            const downPaymentPercent = parseFloat(document.getElementById('downPayment').value) || 0;
-            const interestRate = parseFloat(document.getElementById('interestRate').value) || 0;
-            const loanTerm = parseFloat(document.getElementById('loanTerm').value) || 0;
+            const closingCostsPercent = parseFloat(document.getElementById('closingCosts').value) || 0;
+            const renovationCosts = parseFloat(document.getElementById('renovationCosts').value) || 0;
+
+            const useLoan = document.getElementById('useLoan').checked;
+            let downPaymentPercent = 0;
+            let interestRate = 0;
+            let loanTerm = 0;
+
+            if (useLoan) {
+                downPaymentPercent = parseFloat(document.getElementById('downPayment').value) || 0;
+                interestRate = parseFloat(document.getElementById('interestRate').value) || 0;
+                loanTerm = parseFloat(document.getElementById('loanTerm').value) || 0;
+            }
+
             const rentalIncome = parseFloat(document.getElementById('rentalIncome').value) || 0;
+            const otherMonthlyIncome = parseFloat(document.getElementById('otherMonthlyIncome').value) || 0;
             const propertyTaxes = parseFloat(document.getElementById('propertyTaxes').value) || 0;
             const insurance = parseFloat(document.getElementById('insurance').value) || 0;
             const hoaFees = parseFloat(document.getElementById('hoaFees').value) || 0;
             const maintenancePercent = parseFloat(document.getElementById('maintenance').value) || 0;
             const vacancyRate = parseFloat(document.getElementById('vacancyRate').value) || 0;
             const propertyManagementPercent = parseFloat(document.getElementById('propertyManagement').value) || 0;
-            const closingCostsPercent = parseFloat(document.getElementById('closingCosts').value) || 0;
-            const renovationCosts = parseFloat(document.getElementById('renovationCosts').value) || 0;
+            const otherMonthlyCosts = parseFloat(document.getElementById('otherMonthlyCosts').value) || 0;
+
+            // These are for future calculations and do not affect current output
+            const incomeAnnualIncrease = parseFloat(document.getElementById('incomeAnnualIncrease').value) || 0;
+            const expenseAnnualIncrease = parseFloat(document.getElementById('expenseAnnualIncrease').value) || 0;
+            const knowSellPrice = document.getElementById('knowSellPrice').checked;
+            const exactSellPrice = parseFloat(document.getElementById('exactSellPrice').value) || 0;
+            const valueAppreciation = parseFloat(document.getElementById('valueAppreciation').value) || 0;
+            const holdingLength = parseFloat(document.getElementById('holdingLength').value) || 0;
+            const costToSell = parseFloat(document.getElementById('costToSell').value) || 0;
+
 
             // 1. Loan Amount
             const downPaymentAmount = purchasePrice * (downPaymentPercent / 100);
-            const loanAmount = purchasePrice - downPaymentAmount;
+            const loanAmount = useLoan ? (purchasePrice - downPaymentAmount) : 0;
 
             // 2. Monthly Mortgage Payment (P&I)
-            const monthlyMortgage = calculateMortgage(loanAmount, interestRate, loanTerm);
+            const monthlyMortgage = useLoan ? calculateMortgage(loanAmount, interestRate, loanTerm) : 0;
 
             // 3. Monthly Expenses
             const monthlyPropertyTaxes = propertyTaxes / 12;
@@ -200,12 +321,12 @@
             const monthlyMaintenance = rentalIncome * (maintenancePercent / 100);
             const monthlyPropertyManagement = rentalIncome * (propertyManagementPercent / 100);
 
-            const totalMonthlyExpenses = monthlyMortgage + monthlyPropertyTaxes + monthlyInsurance + hoaFees + monthlyMaintenance + monthlyPropertyManagement;
+            const totalMonthlyExpenses = monthlyMortgage + monthlyPropertyTaxes + monthlyInsurance + hoaFees + monthlyMaintenance + monthlyPropertyManagement + otherMonthlyCosts;
 
             // 4. Net Operating Income (NOI)
-            const effectiveRentalIncome = rentalIncome * (1 - (vacancyRate / 100));
-            const annualOperatingExpensesExcludingMortgage = propertyTaxes + insurance + (hoaFees * 12) + (monthlyMaintenance * 12) + (monthlyPropertyManagement * 12);
-            const annualNOI = (effectiveRentalIncome * 12) - annualOperatingExpensesExcludingMortgage;
+            const effectiveGrossIncome = (rentalIncome + otherMonthlyIncome) * (1 - (vacancyRate / 100));
+            const annualOperatingExpensesExcludingMortgage = propertyTaxes + insurance + (hoaFees * 12) + (monthlyMaintenance * 12) + (monthlyPropertyManagement * 12) + (otherMonthlyCosts * 12);
+            const annualNOI = (effectiveGrossIncome * 12) - annualOperatingExpensesExcludingMortgage;
             const monthlyNOI = annualNOI / 12;
 
             // 5. Monthly Cash Flow
@@ -225,28 +346,82 @@
             const capRate = (purchasePrice > 0) ? (annualNOI / purchasePrice) * 100 : 0;
 
             // 10. Gross Rental Yield
-            const grossRentalYield = (purchasePrice > 0) ? ((rentalIncome * 12) / purchasePrice) * 100 : 0;
+            const grossRentalYield = (purchasePrice > 0) ? (((rentalIncome + otherMonthlyIncome) * 12) / purchasePrice) * 100 : 0;
 
-            // Update display elements
-            document.getElementById('loanAmount').textContent = `$${loanAmount.toFixed(2)}`;
-            document.getElementById('monthlyMortgage').textContent = `$${monthlyMortgage.toFixed(2)}`;
-            document.getElementById('totalMonthlyExpenses').textContent = `$${totalMonthlyExpenses.toFixed(2)}`;
-            document.getElementById('netOperatingIncome').textContent = `$${monthlyNOI.toFixed(2)}`;
-            document.getElementById('monthlyCashFlow').textContent = `$${monthlyCashFlow.toFixed(2)}`;
-            document.getElementById('annualCashFlow').textContent = `$${annualCashFlow.toFixed(2)}`;
-            document.getElementById('initialInvestment').textContent = `$${initialInvestment.toFixed(2)}`;
-            document.getElementById('cashOnCashReturn').textContent = `${cashOnCashReturn.toFixed(2)}%`;
-            document.getElementById('capRate').textContent = `${capRate.toFixed(2)}%`;
-            document.getElementById('grossRentalYield').textContent = `${grossRentalYield.toFixed(2)}%`;
+            // Update display elements with formatting
+            document.getElementById('loanAmount').textContent = `$${formatNumber(loanAmount)}`;
+            document.getElementById('monthlyMortgage').textContent = `$${formatNumber(monthlyMortgage)}`;
+            document.getElementById('totalMonthlyExpenses').textContent = `$${formatNumber(totalMonthlyExpenses)}`;
+            document.getElementById('netOperatingIncome').textContent = `$${formatNumber(monthlyNOI)}`;
+            document.getElementById('monthlyCashFlow').textContent = `$${formatNumber(monthlyCashFlow)}`;
+            document.getElementById('annualCashFlow').textContent = `$${formatNumber(annualCashFlow)}`;
+            document.getElementById('initialInvestment').textContent = `$${formatNumber(initialInvestment)}`;
+            document.getElementById('cashOnCashReturn').textContent = `${formatNumber(cashOnCashReturn)}%`;
+            document.getElementById('capRate').textContent = `${formatNumber(capRate)}%`;
+            document.getElementById('grossRentalYield').textContent = `${formatNumber(grossRentalYield)}%`;
         }
 
-        // Add event listeners to all input fields to trigger recalculation on change
-        document.querySelectorAll('input[type="number"]').forEach(input => {
-            input.addEventListener('input', updateCalculations);
+        // Event listener for "Use Loan?" checkbox
+        document.getElementById('useLoan').addEventListener('change', function() {
+            const loanFields = document.getElementById('loanFields');
+            if (this.checked) {
+                loanFields.classList.remove('hidden');
+            } else {
+                loanFields.classList.add('hidden');
+                // Reset loan-related inputs if loan is not used
+                document.getElementById('downPayment').value = 0;
+                document.getElementById('interestRate').value = 0;
+                document.getElementById('loanTerm').value = 0;
+            }
+            updateCalculations(); // Recalculate after toggling
         });
 
-        // Initial calculation on page load
-        window.onload = updateCalculations;
+        // Event listener for "Do You Know the Sell Price?" checkbox
+        document.getElementById('knowSellPrice').addEventListener('change', function() {
+            const sellPriceFields = document.getElementById('sellPriceFields');
+            const appreciationFields = document.getElementById('appreciationFields');
+            if (this.checked) {
+                sellPriceFields.classList.remove('hidden');
+                appreciationFields.classList.add('hidden'); // Hide appreciation fields if exact price is known
+            } else {
+                sellPriceFields.classList.add('hidden');
+                appreciationFields.classList.remove('hidden'); // Show appreciation fields if exact price is not known
+                // Reset exact sell price if not used
+                document.getElementById('exactSellPrice').value = 0;
+            }
+            // No recalculation needed as these fields don't affect current metrics
+        });
+
+
+        // Add event listeners to all input fields and select elements to trigger recalculation on change
+        document.querySelectorAll('input[type="number"], input[type="text"], select').forEach(element => {
+            element.addEventListener('input', updateCalculations);
+            element.addEventListener('change', updateCalculations); // For select elements
+        });
+
+        // Initial calculation and UI setup on page load
+        window.onload = function() {
+            updateCalculations();
+            // Ensure initial state of loan fields is correct
+            const useLoanCheckbox = document.getElementById('useLoan');
+            const loanFields = document.getElementById('loanFields');
+            if (useLoanCheckbox.checked) {
+                loanFields.classList.remove('hidden');
+            } else {
+                loanFields.classList.add('hidden');
+            }
+            // Ensure initial state of sell price fields is correct
+            const knowSellPriceCheckbox = document.getElementById('knowSellPrice');
+            const sellPriceFields = document.getElementById('sellPriceFields');
+            const appreciationFields = document.getElementById('appreciationFields');
+            if (knowSellPriceCheckbox.checked) {
+                sellPriceFields.classList.remove('hidden');
+                appreciationFields.classList.add('hidden');
+            } else {
+                sellPriceFields.classList.add('hidden');
+                appreciationFields.classList.remove('hidden');
+            }
+        };
     </script>
 </body>
 </html>
